@@ -29,45 +29,47 @@ const UseEffectDemo = (props) => {
   // });
 
   return (
-    <>
-      <h1>A simple useEffect() hook demo</h1>
+    <div style={{ backgroundColor: "#e0d3bc" }}>
+      <h1>2. useEffect() hook demo w/ same counter</h1>
       <p>
         The useEffect() hook is one of the basic hooks. It can be used to handle
         the componentDidMount (initialisation/ mounting), componentDidUpdate
         (state update/ data changes) and componentWillUnmount (destroy)
         lifecycle that is available for Class based components.
       </p>
-      <h2>Counter</h2>
-      <div>{counterValue}</div>
-      <div>
-        <button
-          type="button"
-          disabled={counterValue === 10}
-          onClick={(event) => {
-            if (counterValue < 10) {
-              setCounterVal(counterValue + 1);
-            }
-          }}
-        >
-          +
-        </button>
-        <button
-          type="button"
-          disabled={counterValue === 1}
-          onClick={(event) => {
-            if (counterValue > 1) {
-              setCounterVal(counterValue - 1);
-            }
-          }}
-        >
-          -
-        </button>
+      <h2>Counter w/ fetching</h2>
+      <div className="counter">
+        <span style={{ fontSize: "25px" }}>{counterValue}</span>
         <div>
-          <h3>{pictureData?.title}</h3>
-          <img src={pictureData?.thumbnailUrl} alt={pictureData?.title} />
+          <button
+            type="button"
+            disabled={counterValue === 10}
+            onClick={(event) => {
+              if (counterValue < 10) {
+                setCounterVal(counterValue + 1);
+              }
+            }}
+          >
+            +
+          </button>
+          <button
+            type="button"
+            disabled={counterValue === 1}
+            onClick={(event) => {
+              if (counterValue > 1) {
+                setCounterVal(counterValue - 1);
+              }
+            }}
+          >
+            -
+          </button>
+          <div>
+            <p style={{ fontSize: "8px" }}>{pictureData?.title}</p>
+            <img src={pictureData?.thumbnailUrl} alt={pictureData?.title} />
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

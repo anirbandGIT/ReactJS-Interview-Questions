@@ -21,8 +21,8 @@ export const UseContextDemo = (props) => {
   // * instead of just sending a value we can send a modifier as well
   const [mood, modifyMood] = useState("😄");
   return (
-    <>
-      <h1>A simple useContext() hook demo</h1>
+    <div style={{ backgroundColor: "#dfe0c5" }}>
+      <h1>3. useContext() hook demo with mood setter</h1>
       <p>
         The useContext() hook is one of the basic hooks. It allows sharing of
         data across the component tree.
@@ -32,7 +32,7 @@ export const UseContextDemo = (props) => {
       <MoodContext.Provider value={[mood, modifyMood]}>
         {props.children}
       </MoodContext.Provider>
-    </>
+    </div>
   );
 };
 
@@ -48,5 +48,46 @@ export const MoodyComponent = (props) => {
     setMood("😡");
   }, []);
 
-  return <>I use context, and i am {mood}</>;
+  return (
+    <div className="container">
+      I use context, and i am {mood}
+      <div>
+        <button
+          type="button"
+          onClick={(event) => setMood(event.target.innerHTML)}
+        >
+          😄
+        </button>
+        <button
+          type="button"
+          onClick={(event) => setMood(event.target.innerHTML)}
+        >
+          😭
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export const MoodyFriendComponent = (props) => {
+  const [mood, setMood] = useContext(MoodContext);
+  return (
+    <div className="container">
+      I also use context, i am a friend and i am {mood}
+      <div>
+        <button
+          type="button"
+          onClick={(event) => setMood(event.target.innerHTML)}
+        >
+          🤭
+        </button>
+        <button
+          type="button"
+          onClick={(event) => setMood(event.target.innerHTML)}
+        >
+          😈
+        </button>
+      </div>
+    </div>
+  );
 };
